@@ -4,16 +4,16 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Home from "../pages/home";
+import Project from "../projects";
 import Signin from "../pages/authentication/signin";
 
 const routes = () => {
   return (
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/home" />
+        <Redirect exact from="/" to="/project" />
         <Route path="/signin" component={Signin} />
-        <Route path="/home" component={Home} />
+        <Route path="/project" component={Project} />
       </Switch>
     </Router>
   );
