@@ -1,5 +1,5 @@
 
-const signin = () => {
+const Signin = () => {
     return (
         <div>
             <p>signin</p>
@@ -7,4 +7,4 @@ const signin = () => {
     )
 }
 
-export default signin
+export default Signin

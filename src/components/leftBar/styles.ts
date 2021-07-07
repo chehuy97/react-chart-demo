@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { sizes, colors } from "../../utils/styles";
-import HomeIcon from "@material-ui/icons/Home";
+import { sizes, colors, mixin } from "../../utils/styles";
 
 export const LeftBar = styled.aside`
   display: flex;
@@ -10,18 +9,28 @@ export const LeftBar = styled.aside`
   left: 0;
   overflow-x: hidden;
   height: 100vh;
-  width: ${sizes.appNarBarLeftWidth}px;
+  width: ${sizes.appNavBarLeftWidth}vw;
   background-color: ${colors.primary};  
 `;
 
 export const NavItem = styled.div`
   color: white;
+  margin: 10px 20px 10px 20px;
+  padding-left: 10px;
+  border-radius: 3px;
   display: flex;
   flex-direction: row;
-  height: 60px;
+  height: 40px;
   align-items: center;
-  padding-left: 20px;
-  &:active {
+  text-decoration: none;
+  ${mixin.clickable}
+  &.active {
+    font-weight: bold;
+    color: gray;
+    background-color: ${colors.navbarHover};
+  }
+  &:hover {
+    color: gray;
     background-color: ${colors.navbarHover};
   }
 `;

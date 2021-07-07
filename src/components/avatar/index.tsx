@@ -1,7 +1,7 @@
 import { AvatarView, AvatarImage, Line, Username } from "./styles";
 import avatar from "../../App/assets/images/avatar.jpeg";
 
-const index = () => {
+const Avatar = () => {
   return (
     <AvatarView>
       <AvatarImage src={avatar} />
@@ -11,4 +11,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Avatar;

@@ -5,9 +5,10 @@ import HomeIcon from "@material-ui/icons/Home";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import MapIcon from "@material-ui/icons/Map";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { NavLink } from "react-router-dom";
 
-const index = () => {
-  // const match = useRouteMatch();
+const LeftNavBar = () => {
+  const match = useRouteMatch();
   const showIconItem = (iconName: string) => {
     switch (iconName) {
       case "Home":
@@ -22,8 +23,10 @@ const index = () => {
   };
 
   const renderLinkItem = (text: string, path: string) => {
+
+    const linkItemProps = {as: NavLink, exact: true, to: `${match.path}${path}`}
     return (
-      <NavItem>
+      <NavItem {...linkItemProps}>
         {showIconItem(text)}
         <NavText>{text}</NavText>
       </NavItem>
@@ -34,13 +37,13 @@ const index = () => {
     <LeftBar>
       <Avatar />
       <ItemList>
-        {renderLinkItem("Home", "/Home")}
-        {renderLinkItem("Chart", "/Chart")}
-        {renderLinkItem("Map", "/Map")}
+        {renderLinkItem("Home", "/home")}
+        {renderLinkItem("Chart", "/chart")}
+        {renderLinkItem("Map", "/map")}
       </ItemList>
       {renderLinkItem('Sign out', '')}
     </LeftBar>
   );
 };
 
-export default index;
+export default LeftNavBar;
