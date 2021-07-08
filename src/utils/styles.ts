@@ -2,7 +2,8 @@ import { css } from "styled-components"
 
 export const colors = {
     primary: '#2E2E2E',
-    navbarHover: '#BEBEBE'
+    navbarHover: '#BEBEBE',
+    loginBg: '#eeeeee'
 }
 
 export const zIndexValues = {
@@ -13,6 +14,9 @@ export const zIndexValues = {
 
 export const sizes = {
     appNavBarLeftWidth: 12,
+
+    imgLoginFormWidth: 650,
+    imgLoginFormHeight: 450
 
 }
 
@@ -26,3 +30,4 @@ export const mixin = {
         user-select: none;
     `
 }
+

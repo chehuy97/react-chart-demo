@@ -11,7 +11,7 @@ const routes = () => {
   return (
     <Router>
       <Switch>
-        <Redirect exact from="/" to="/project" />
+        <Redirect exact from="/" to="/signin" />
         <Route path="/signin" component={Signin} />
         <Route path="/project" component={Project} />
       </Switch>

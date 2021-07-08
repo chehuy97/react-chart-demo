@@ -5,24 +5,21 @@ import { MapView } from "./styles";
 
 const Map = () => {
   const [position, setPosition]:[[number, number], (position:[number, number]) => void] = useState([16.071771,108.220139])
-  
-  
-  useEffect(() => {},[position])
 
   const LocationMarker = () => {
     const map = useMapEvents({
-      click() {
-        map.locate()
+      click(e:any) {
+        setPosition([e.latlng.lat, e.latlng.lng])
       },
-      locationfound(e:any) {
-        setPosition(e.latlng)
-        map.flyTo(e.latlng, map.getZoom())
-      },
+      // locationfound(e:any) {
+      //   setPosition(e.latlng)
+      //   map.flyTo(e.latlng, map.getZoom())
+      // },
     })
   
-    return position === null ? null : (
+    return (
       <Marker position={position}>
-        <Popup>You are here</Popup>
+        <Popup>{'Position is '+position[0]+', '+position[1]}</Popup>
       </Marker>
     )
   }
