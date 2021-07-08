@@ -30,7 +30,7 @@ const Project = () => {
             <Map/>
           )}
         /> 
-        {match.isExact && <Redirect to={`${match.url}/home`} />}
+        {match.isExact && <Redirect to={`${match.url}/map`} />}
       </ProjectPage>
   )
 };
