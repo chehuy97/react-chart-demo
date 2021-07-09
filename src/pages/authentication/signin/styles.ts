@@ -10,7 +10,6 @@ export const LoginBlock = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  /* background-image: url('./src/App/assets/images/coffee.jpeg'); */
 `;
 
 export const LoginForm = styled.div`
@@ -36,7 +35,7 @@ export const Title = styled.p`
     font-size: 30px;
     font-weight: bold;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 `
 
 export const LoginArea = styled.div`
@@ -49,13 +48,14 @@ export const LoginArea = styled.div`
 export const fieldStyle = {
     width: '350px',
     height: '50px',
-    marginTop: '30',
-    marginBottom: '30'
+    marginTop: '15px',
+    marginBottom: '15px'
 }
 
 export const btnStyle = {
     width: '350px',
     height: '50px',
     backgroundColor: '#3895D3',
-    color: 'white'
+    color: 'white',
+    marginTop: '15px'
 } 

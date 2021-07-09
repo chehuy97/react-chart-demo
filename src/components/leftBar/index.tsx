@@ -1,14 +1,16 @@
-import { LeftBar, NavItem, NavText, ItemList } from "./styles";
+import { LeftBar, NavItem, NavText, ItemList, StyledButton } from "./styles";
 import Avatar from "../avatar";
-import { useRouteMatch } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import EqualizerIcon from "@material-ui/icons/Equalizer";
 import MapIcon from "@material-ui/icons/Map";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { NavLink } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const LeftNavBar = () => {
   const match = useRouteMatch();
+  const history = useHistory();
   const showIconItem = (iconName: string) => {
     switch (iconName) {
       case "Home":
@@ -22,9 +24,17 @@ const LeftNavBar = () => {
     }
   };
 
-  const renderLinkItem = (text: string, path: string) => {
+  const handle_logout = () => {
+    localStorage.removeItem('isAuthenticated')
+    history.push('/signin')
+  }
 
-    const linkItemProps = {as: NavLink, exact: true, to: `${match.path}${path}`}
+  const renderLinkItem = (text: string, path: string) => {
+    const linkItemProps = {
+      as: NavLink,
+      exact: true,
+      to: `${match.path}${path}`,
+    };
     return (
       <NavItem {...linkItemProps}>
         {showIconItem(text)}
@@ -41,7 +51,9 @@ const LeftNavBar = () => {
         {renderLinkItem("Chart", "/chart")}
         {renderLinkItem("Map", "/map")}
       </ItemList>
-      {renderLinkItem('Sign out', '')}
+      <Button variant="contained" style={StyledButton} onClick={() => handle_logout()}>
+        Signout
+      </Button>
     </LeftBar>
   );
 };

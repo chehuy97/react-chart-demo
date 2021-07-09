@@ -8,13 +8,26 @@ import {
   fieldStyle,
 } from "./styles";
 import image_form from "../../../App/assets/images/blue.jpeg";
+import login_bg from '../../../App/assets/images/login_bg.jpeg';
 import { Button, TextField } from "@material-ui/core";
+import { useState } from "react";
+import { textSpanIntersection } from "typescript";
+import { useHistory } from "react-router-dom";
 
 const Signin = () => {
-  const divStyle = {
-    margin: "40px",
-    border: "5px solid pink",
-  };
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const history = useHistory()
+
+  const handle_login = () => {
+      if(username == 'admin' && password == '123456'){
+          //ok
+          localStorage.setItem("isAuthenticated", "true");
+          history.push('/project')
+      } else {
+        alert('wrong account info')
+      }
+  }
 
   return (
     <LoginBlock>
@@ -28,6 +41,7 @@ const Signin = () => {
             label="Username"
             placeholder="username"
             variant="outlined"
+            onChange={e => setUsername(e.target.value)}
           />
           <TextField
             style={fieldStyle}
@@ -36,10 +50,12 @@ const Signin = () => {
             type="password"
             autoComplete="current-password"
             variant="outlined"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
           />
           <Button
             style={btnStyle}
-            onClick={() => console.log("hehe")}
+            onClick={() => handle_login()}
             variant="contained"
           >
             Login

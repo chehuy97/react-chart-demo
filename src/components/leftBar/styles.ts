@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { sizes, colors, mixin } from "../../utils/styles";
+import Button from '@material-ui/core/Button';
 
 export const LeftBar = styled.aside`
   display: flex;
@@ -41,3 +42,7 @@ export const NavText = styled.p`
 export const ItemList = styled.div`
   flex: 1;
 `;
+
+export const StyledButton = {
+  margin: '10px 20px 10px 20px'
+}
