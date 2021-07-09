@@ -11,6 +11,7 @@ import { Button } from "@material-ui/core";
 const LeftNavBar = () => {
   const match = useRouteMatch();
   const history = useHistory();
+  
   const showIconItem = (iconName: string) => {
     switch (iconName) {
       case "Home":

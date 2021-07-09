@@ -10,20 +10,28 @@ import {
 import image_form from "../../../App/assets/images/blue.jpeg";
 import login_bg from '../../../App/assets/images/login_bg.jpeg';
 import { Button, TextField } from "@material-ui/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { textSpanIntersection } from "typescript";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 
 const Signin = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const history = useHistory()
+  const location = useLocation()
+  const match = useRouteMatch()
+  let { from } = location.state || { from: { pathname: "/project" } };
+
+  useEffect(() => {
+    console.log('login match is '+match.path);
+    
+  })
 
   const handle_login = () => {
       if(username == 'admin' && password == '123456'){
           //ok
           localStorage.setItem("isAuthenticated", "true");
-          history.push('/project')
+          history.replace(from)
       } else {
         alert('wrong account info')
       }

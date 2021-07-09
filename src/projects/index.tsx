@@ -4,10 +4,16 @@ import Home from '../pages/home'
 import Chart from  '../pages/chart'
 import Map from '../pages/map'
 import { ProjectPage } from './styles'
+import { useEffect } from "react";
 
 const Project = () => {
 
   const match = useRouteMatch()
+
+  useEffect(() => {
+    console.log('match is '+match.path+' and url '+match.url);
+    
+  })
 
   return (
       <ProjectPage>

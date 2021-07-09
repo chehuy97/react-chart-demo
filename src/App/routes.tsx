@@ -11,20 +11,16 @@ import { useEffect } from "react";
 
 const Routes = () => {
 
-  const isLoggedin = !(localStorage.getItem('username') == '' || localStorage.getItem('username') == null)
-
-  useEffect(() => {
-    let check = localStorage.getItem('username')
-    console.log(check);
-    
-  })
+  const isLoggedin = !(localStorage.getItem('isAuthenticated') == '' || localStorage.getItem('isAuthenticated') == null)
 
   return (
     <Router>
       <Switch>
         <Redirect exact from="/" to={isLoggedin ? '/project' : '/signin'} />
         <Route path="/signin" component={Signin} />
-        <ProtectedRoute authenticationPath='/signin'  component={Project}/>
+        <ProtectedRoute path="/project">
+              <Project />
+        </ProtectedRoute>
       </Switch>
     </Router>
   );
