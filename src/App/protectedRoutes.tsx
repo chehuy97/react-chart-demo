@@ -31,4 +31,9 @@ export default function ProtectedRoute({
       }
     />
   );
+  // if (isAuthenticated) {
+  //   return <Route {...routeProps} component={children} />;
+  // } else {
+  //   return <Redirect to="/login" />;
+  //}
 }

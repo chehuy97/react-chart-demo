@@ -58,4 +58,20 @@ export const btnStyle = {
     backgroundColor: '#3895D3',
     color: 'white',
     marginTop: '15px'
-} 
+}
+
+export const LanguageBlock = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 350px;
+    height: 50px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+`
+export const Line = styled.div`
+    width: 2px;
+    height: 15px;
+    background-color: black;
+    margin: 0px 30px 0px 30px;
+`

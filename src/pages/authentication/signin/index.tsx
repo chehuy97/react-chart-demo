@@ -6,13 +6,15 @@ import {
   LoginArea,
   btnStyle,
   fieldStyle,
+  LanguageBlock,
+  Line
 } from "./styles";
 import image_form from "../../../App/assets/images/blue.jpeg";
-import login_bg from '../../../App/assets/images/login_bg.jpeg';
 import { Button, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { textSpanIntersection } from "typescript";
 import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Signin = () => {
   const [username, setUsername] = useState('')
@@ -21,11 +23,7 @@ const Signin = () => {
   const location = useLocation()
   const match = useRouteMatch()
   let { from } = location.state || { from: { pathname: "/project" } };
-
-  useEffect(() => {
-    console.log('login match is '+match.path);
-    
-  })
+  const { t, i18n } = useTranslation('common')
 
   const handle_login = () => {
       if(username == 'admin' && password == '123456'){
@@ -37,25 +35,32 @@ const Signin = () => {
       }
   }
 
+  const switch_lang = (lang:string) => {
+    console.log("Language is "+lang);
+    localStorage.setItem('language', lang)
+    i18n.changeLanguage(lang)
+    
+  }
+
   return (
     <LoginBlock>
       <LoginForm>
         <LoginImage src={image_form} />
         <LoginArea>
-          <Title>Signin Form</Title>
+          <Title>{t('Login Form')}</Title>
           <TextField
             style={fieldStyle}
             id="standard-required"
-            label="Username"
-            placeholder="username"
+            label={t('Username')}
+            placeholder={t('Username')}
             variant="outlined"
             onChange={e => setUsername(e.target.value)}
           />
           <TextField
             style={fieldStyle}
             id="outlined-password-input"
-            label="Password"
-            type="password"
+            label={t('Password')}
+            type='password'
             autoComplete="current-password"
             variant="outlined"
             value={password}
@@ -66,8 +71,13 @@ const Signin = () => {
             onClick={() => handle_login()}
             variant="contained"
           >
-            Login
+            {t('Login')}
           </Button>
+          <LanguageBlock>
+            <Button onClick={() => {switch_lang('en')}}>English</Button>
+            <Line/>
+            <Button onClick={() => {switch_lang('jp')}}>Japanese</Button>
+          </LanguageBlock>
         </LoginArea>
       </LoginForm>
     </LoginBlock>

@@ -7,10 +7,12 @@ import MapIcon from "@material-ui/icons/Map";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { NavLink } from "react-router-dom";
 import { Button } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
 
 const LeftNavBar = () => {
   const match = useRouteMatch();
   const history = useHistory();
+  const { t, i18n } = useTranslation('common')
   
   const showIconItem = (iconName: string) => {
     switch (iconName) {
@@ -48,12 +50,12 @@ const LeftNavBar = () => {
     <LeftBar>
       <Avatar />
       <ItemList>
-        {renderLinkItem("Home", "/home")}
-        {renderLinkItem("Chart", "/chart")}
-        {renderLinkItem("Map", "/map")}
+        {renderLinkItem(t('Home'), "/home")}
+        {renderLinkItem(t('Chart'), "/chart")}
+        {renderLinkItem(t('Map'), "/map")}
       </ItemList>
       <Button variant="contained" style={StyledButton} onClick={() => handle_logout()}>
-        Signout
+        {t('Sign out')}
       </Button>
     </LeftBar>
   );

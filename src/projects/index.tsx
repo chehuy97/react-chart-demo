@@ -23,19 +23,19 @@ const Project = () => {
           render={() => (
             <Home/>
           )}
-        /> 
+        />
         <Route
           path={`${match.path}/chart`}
           render={() => (
             <Chart/>
           )}
-        /> 
+        />
         <Route
           path={`${match.path}/map`}
           render={() => (
             <Map/>
           )}
-        /> 
+        />
         {match.isExact && <Redirect to={`${match.url}/map`} />}
       </ProjectPage>
   )

@@ -1,9 +1,13 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const Home = () => {
+
+    const { t, i18n } = useTranslation('common')
+
     return (
         <div>
-            <p>home</p>
+            <p>{t('That is a home')}</p>
         </div>
     )
 }
