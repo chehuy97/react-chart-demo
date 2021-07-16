@@ -11,28 +11,43 @@ import {
 } from "./styles";
 import image_form from "../../../App/assets/images/blue.jpeg";
 import { Button, TextField } from "@material-ui/core";
-import { useEffect, useState } from "react";
-import { textSpanIntersection } from "typescript";
+import { useEffect, useState } from "react"
 import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from 'react-redux'
+import { useSelector } from '../../../redux'
+import { login, User } from '../../../redux'
 
 const Signin = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const history = useHistory()
   const location = useLocation()
-  const match = useRouteMatch()
-  let { from } = location.state || { from: { pathname: "/project" } };
+  const dispatch = useDispatch()
   const { t, i18n } = useTranslation('common')
 
-  const handle_login = () => {
-      if(username == 'admin' && password == '123456'){
-          //ok
-          localStorage.setItem("isAuthenticated", "true");
-          history.replace(from)
-      } else {
-        alert('wrong account info')
+  const loginSuccess = (data:any) => {
+    console.log('LOGIN SUCCESS '+ data);
+    
+  }
+
+  const loginFalure = (msg:string) => {
+    console.log('LOGIN FAILURE: '+msg)
+  }
+
+  const handle_login = async () => {
+      // if(username == 'admin' && password == '123456'){
+      //     //ok
+      //     localStorage.setItem("isAuthenticated", "true");
+      //     history.replace(from)x
+      // } else {
+      //   alert('wrong account info')
+      // }
+      let user:User = {
+        email: username,
+        password: password
       }
+      await dispatch(login(user, loginSuccess, loginFalure))
   }
 
   const switch_lang = (lang:string) => {
